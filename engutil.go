@@ -3,7 +3,6 @@ package engutil
 import (
 	"regexp"
 	"strconv"
-	"strings"
 	"unicode"
 	"unicode/utf8"
 )
@@ -44,10 +43,11 @@ func Vowel(ru rune) bool {
 
 // Pluralise the noun s
 func Pluralise(s string) string {
-	matchedCy, _ := regexp.MatchString("[^aeiou]y", s)
+	matchedCy, _ := regexp.MatchString("[^aeiou]y$", s)
+	matchedS, _ := regexp.MatchString("s$|x$|z$|ch$|sh$", s)
 	if matchedCy {
 		return s[:len(s)-1] + "ies"
-	} else if strings.HasSuffix(s, "s") {
+	} else if matchedS {
 		return s + "es"
 	}
 	return s + "s"

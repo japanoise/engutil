@@ -1,3 +1,3 @@
 # engutil
 
-Utility functions for dealing with english text
+Utility functions for dealing with English text
